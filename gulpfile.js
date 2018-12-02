@@ -11,7 +11,9 @@ var url = require('url');
 var path = require('path');
 
 var fs = require('fs');
-//开发css
+
+var data = require('./mock/data')
+    //开发css
 gulp.task('devScss', function() {
     return gulp.src('./src/scss/*.scss')
         .pipe(sass())
@@ -36,7 +38,7 @@ gulp.task('server', function() {
                     return
                 }
                 if (pathname === '/api/swiper') {
-
+                    res.end(JSON.stringify({ code: 1, data: data }))
                 } else {
                     pathname = pathname === '/' ? 'index.html' : pathname;
                     res.end(fs.readFileSync(path.join(__dirname, 'src', pathname)))

@@ -108,12 +108,18 @@
         </div>
     </div>
 </body>
-<script src="js/index.js"></script>
 <script src="js/flexible.js"></script>
 <script src="js/zepto.js"></script>
 <script src="swiper4/swiper-4.3.5.min.js"></script>
 <script>
-    new Swiper('.swiper-container')
+    new Swiper('.swiper-container');
+    $.ajax({
+        url: '/api/swiper',
+        dataType: 'json',
+        success: function(res) {
+            console.log(res)
+        }
+    })
 </script>
 
 </html>
