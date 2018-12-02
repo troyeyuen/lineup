@@ -18,7 +18,7 @@
         <div class="con">
             <div class="swiper-container">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">
+                    <!-- <div class="swiper-slide">
                         <dl>
                             <dd><img src="images/t.png" alt=""></dd>
                             <dt>美食</dt>
@@ -101,7 +101,7 @@
                             <dd><img src="images/t.png" alt=""></dd>
                             <dt>美食</dt>
                         </dl>
-                    </div>
+                    </div> -->
 
                 </div>
             </div>
@@ -110,16 +110,40 @@
 </body>
 <script src="js/flexible.js"></script>
 <script src="js/zepto.js"></script>
-<script src="swiper4/swiper-4.3.5.min.js"></script>
+<script src="js/swiper-4.js"></script>
 <script>
-    new Swiper('.swiper-container');
     $.ajax({
         url: '/api/swiper',
         dataType: 'json',
         success: function(res) {
-            console.log(res)
+            if (res.code === 1) {
+                renderS(res.data)
+            }
         }
     })
+
+    function renderS(data) {
+        var str = "";
+        data.forEach(function(item) {
+            str += `
+            <div class="swiper-slide">
+            `
+            str += renderD(item.lsit);
+            str += `</div>`
+        })
+        $('.swiper-wrapper').html(str);
+        new Swiper('.swiper-container');
+    }
+
+    function renderD(data) {
+        console.log(data)
+        return data.map(function(item) {
+            return ` <dl>
+                            <dd><img src="${item.url}" alt=""></dd>
+                            <dt>${item.title}</dt>
+                        </dl>`
+        }).join('')
+    }
 </script>
 
 </html>
