@@ -1,0 +1,52 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body,
+html {
+    width: 100%;
+    height: 100%;
+    background: salmon;
+}
+
+.wrapper {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    header {
+        width: 100%;
+        height: 44px;
+        background: skyblue;
+    }
+    .con {
+        width: 100%;
+        flex: 1;
+        overflow: hidden;
+        -webkit-overflow-scrolling: touch;
+    }
+    .swiper-slide {
+        display: flex;
+        flex-wrap: wrap;
+        dl {
+            width: 20%;
+            dd {
+                width: 60px;
+                height: 60px;
+                margin: 10px auto;
+                border-radius: 50%;
+                overflow: hidden;
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+            dt {
+                text-align: center;
+                font-size: 18px;
+            }
+        }
+    }
+}
